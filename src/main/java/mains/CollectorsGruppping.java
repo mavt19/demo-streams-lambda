@@ -1,8 +1,10 @@
 package mains;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import model.Department;
@@ -40,6 +42,12 @@ public class CollectorsGruppping {
 			//Group employees by department
 			Map<Department,List<Employee>> departmentsByDepartment = findAllEmployees().stream().collect(Collectors.groupingBy(Employee::getDepartment));
 			System.out.println(departmentsByDepartment);
+			
+			//obtener los empleados con mas salario por departamento
+			List<Employee> highPayEmpByDept = findAllEmployees().stream().collect(Collectors.groupingBy(Employee::getDepartment))
+			.values().stream().map(depEmp -> depEmp.stream().max(Comparator.comparing(Employee::getSalary)).get()).collect(Collectors.toList());
+			
+			System.out.println(highPayEmpByDept);
 
 	}
 	
