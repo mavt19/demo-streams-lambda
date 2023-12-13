@@ -43,9 +43,9 @@ public class CollectorsGruppping {
 			Map<Department,List<Employee>> departmentsByDepartment = findAllEmployees().stream().collect(Collectors.groupingBy(Employee::getDepartment));
 			System.out.println(departmentsByDepartment);
 			
-			//obtener los empleados con mas salario por departamento
+			//obtener los empleados con el salario mas alto por departamento
 			List<Employee> highPayEmpByDept = findAllEmployees().stream().collect(Collectors.groupingBy(Employee::getDepartment))
-			.values().stream().map(depEmp -> depEmp.stream().max(Comparator.comparing(Employee::getSalary)).get()).collect(Collectors.toList());
+			.values().stream().peek(x-> System.out.println("result : "+ x)).map(depEmp -> depEmp.stream().max(Comparator.comparing(Employee::getSalary)).get()).collect(Collectors.toList());
 			
 			System.out.println(highPayEmpByDept);
 
