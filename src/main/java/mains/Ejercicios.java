@@ -10,12 +10,31 @@ public class Ejercicios {
 
 	public static void main(String[] args) {
 		String str = "aaabbcc";// output a3b2c2
-		int entrada = 9999992;
+		int entrada = 38;
 //		System.out.println(countCharacterFunctional(str));
 		System.out.println(recursividadSumaDigitos(entrada));
 
 	}
 
+	
+	/*
+	 * 
+	 * Now, starting again from a list of names, 
+	 * give me the total number of letters 
+	 * in all the names with more than 5 letters
+	 * 
+	 * */
+	
+	public static int getTotalNumberOfLettersOfNamesLongerThanFive(String... names) {
+		
+		return Stream.of(names)
+		.filter(str -> str.length() > 5)
+		.mapToInt(String::length)
+		.sum();
+	}
+
+	
+	
 	/* 
 	 * crear un metodo que dado un numero entero, suma repetidamente 
 	 * todos sus digitos hasta que solo tenga un digito y devuelvelo
@@ -25,7 +44,7 @@ public class Ejercicios {
 	 * 
 	 */
 	
-	private static int recursividadSumaDigitos(int entrada) {
+	public static int recursividadSumaDigitos(int entrada) {
 		if(String.valueOf(entrada).length() == 1) {
 			return entrada;
 		}
@@ -33,8 +52,9 @@ public class Ejercicios {
 			System.out.println("entrada : " + String.valueOf(entrada));
 			Integer result = Stream.of(String.valueOf(entrada)
 			.split(""))
-			.map(Integer::parseInt)
-			.reduce(0, (x,y) -> x+y);
+			.mapToInt(Integer::parseInt)
+			.sum();
+//			.reduce(0, (x,y) -> x+y);1
 			return recursividadSumaDigitos(result);
 		}
 	}
@@ -45,7 +65,7 @@ public class Ejercicios {
 	 * ejemplo salida a3b3c3
 	 * 
 	 */
-	private static String countCharacter(String str) {
+	public static String countCharacter(String str) {
 		Map<Character, Integer> map = new HashMap<>();
 		StringBuilder stringBuilder = new StringBuilder();
 		for (int i = 0; i < str.length(); i++) {
@@ -60,7 +80,7 @@ public class Ejercicios {
 		return stringBuilder.toString();
 	}
 
-	private static String countCharacterFunctional(String str) {
+	public static String countCharacterFunctional(String str) {
 		Map<Character, Integer> map = new HashMap<>();
 
 		IntStream.range(0, str.length()).forEach(i -> {
