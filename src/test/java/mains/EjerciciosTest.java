@@ -12,11 +12,11 @@ class EjerciciosTest {
 	@Test
 	void testGetTotalNumberOfLettersOfNamesLongerThanFive() {
 		System.out.println("Testing if [william, jones, aaron, seppe, frank, gilliam] returns 14");
-		assertEquals(Ejercicios.getTotalNumberOfLettersOfNamesLongerThanFive("william", "jones", "aaron", "seppe",
-				"frank", "gilliam"), 14);
+		assertEquals(14, Ejercicios.getTotalNumberOfLettersOfNamesLongerThanFive("william", "jones", "aaron", "seppe",
+				"frank", "gilliam"));
 
 		System.out.println("Testing if [aaron] returns 0");
-		assertEquals(Ejercicios.getTotalNumberOfLettersOfNamesLongerThanFive("aaron"), 0);
+		assertEquals(0, Ejercicios.getTotalNumberOfLettersOfNamesLongerThanFive("aaron"));
 	}
 
 	@Test
@@ -39,8 +39,8 @@ class EjerciciosTest {
 
 	@Test
 	void getStringShouldOutputEvenUnevenString() {
-		assertEquals(Ejercicios.getString(List.of(3, 44)), "o3,e44");
-		assertEquals(Ejercicios.getString(List.of(3)), "o3");
+		assertEquals("o3,e44", Ejercicios.getString(List.of(3, 44)));
+		assertEquals("o3", Ejercicios.getString(List.of(3)));
 	}
 
 }
