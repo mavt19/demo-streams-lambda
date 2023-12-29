@@ -60,7 +60,7 @@ class StreamsExampleTest {
 	}
 
 	@Test
-	public void partitionAdultsShouldSeparateKidsFromAdults() {
+	void partitionAdultsShouldSeparateKidsFromAdults() {
 		Person sara = new Person("Sara", 4, "");
 		Person viktor = new Person("Viktor", 40, "");
 		Person eva = new Person("Eva", 42, "");
@@ -75,7 +75,7 @@ class StreamsExampleTest {
 	}
 
 	@Test
-	public void groupByNationalityTest() {
+	void groupByNationalityTest() {
 		Person sara = new Person("Sara", 4, "Norwegian");
 		Person viktor = new Person("Viktor", 40, "Serbian");
 		Person eva = new Person("Eva", 42, "Norwegian");
