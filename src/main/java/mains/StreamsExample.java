@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import model.Person;
@@ -114,6 +115,9 @@ public class StreamsExample {
 
 	public static Map<String, List<Person>> groupByNationalityFunctional(List<Person> people) {
 
+		Map<String, Person> resultToMap = people.stream().collect(Collectors.toMap(Person::getNationality, Function.identity(), (oldKey, newKey) -> newKey));
+		Map<String, Integer> resultToMap2 = people.stream().collect(Collectors.toMap(Person::getName, Person::getAge, (oldKey, newKey) -> newKey));
+		System.out.println(resultToMap + "" + resultToMap2);
 		return people.stream().collect(Collectors.groupingBy(Person::getNationality, Collectors.toList()));
 
 	}
