@@ -117,7 +117,9 @@ public class StreamsExample {
 
 		Map<String, Person> resultToMap = people.stream().collect(Collectors.toMap(Person::getNationality, Function.identity(), (oldKey, newKey) -> newKey));
 		Map<String, Integer> resultToMap2 = people.stream().collect(Collectors.toMap(Person::getName, Person::getAge, (oldKey, newKey) -> newKey));
+		Map<Person, Long> resultToMap3 = people.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 		System.out.println(resultToMap + "" + resultToMap2);
+		System.out.println(resultToMap3);
 		return people.stream().collect(Collectors.groupingBy(Person::getNationality, Collectors.toList()));
 
 	}

@@ -3,6 +3,8 @@ package mains;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -15,7 +17,7 @@ public class Ejercicios {
 //		System.out.println(countCharacterFunctional(str));
 //		System.out.println(recursividadSumaDigitos(entrada));
 		System.out.println(getStringNormal(List.of(3, 44)));
-
+		System.out.println(countCharacterFunctionalRefactor("aaabbcc"));
 	}
 
 	/*
@@ -85,6 +87,18 @@ public class Ejercicios {
 
 	}
 
+	public static String countCharacterFunctionalRefactor(String str) {
+
+		return Optional.ofNullable(str).map(s -> {
+			return s.chars().mapToObj(sObj -> (char) sObj)
+					.collect(Collectors.groupingBy(Function.identity(), Collectors.counting())).entrySet().stream()
+					.map(y -> {
+						return y.getKey() + "" + y.getValue();
+					}).collect(Collectors.joining());
+		}).orElse("");
+
+	}
+
 	/*
 	 * Write a method that returns a comma separated string based on a given list of
 	 * integers. Each element should be preceded by the letter 'e' if the number is
@@ -116,10 +130,10 @@ public class Ejercicios {
 				return "o" + i;
 			}
 		}).forEach(x -> {
-			sb.append(x +",");
+			sb.append(x + ",");
 		});
-		
-		sb.deleteCharAt(sb.length()-1);
+
+		sb.deleteCharAt(sb.length() - 1);
 		return sb.toString();
 	}
 }

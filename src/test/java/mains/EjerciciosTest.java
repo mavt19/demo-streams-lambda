@@ -1,6 +1,6 @@
 package mains;
 
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
@@ -35,6 +35,7 @@ class EjerciciosTest {
 	void testCountCharacterFunctional() {
 		String expected = "a3b2c2";
 		assertEquals(Ejercicios.countCharacterFunctional("aaabbcc"), expected);
+		assertThat(Ejercicios.countCharacterFunctionalRefactor("aaabbcc")).isEqualTo(expected);
 	}
 
 	@Test
