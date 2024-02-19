@@ -18,6 +18,10 @@ public class Ejercicios {
 //		System.out.println(recursividadSumaDigitos(entrada));
 		System.out.println(getStringNormal(List.of(3, 44)));
 		System.out.println(countCharacterFunctionalRefactor("aaabbcc"));
+		
+		System.out.println(Math.sqrt(7));
+		System.out.println(isPrime(14));
+		
 	}
 
 	/*
@@ -135,5 +139,20 @@ public class Ejercicios {
 
 		sb.deleteCharAt(sb.length() - 1);
 		return sb.toString();
+	}
+	
+	private static boolean isPrime(int number) {
+
+		if (number < 2) {
+			return false;
+		}
+
+		for (int i = 2; i < number; i++) {
+			if (number % i == 0) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 }
